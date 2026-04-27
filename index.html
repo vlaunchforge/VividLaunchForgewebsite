@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VividLaunchForge — Your Idea Deserves a Home Online</title>
+  <meta name="description" content="VividLaunchForge designs and builds websites that bring your vision to life — fast, affordable, and stress-free.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FDF8F4;
+      --white: #FFFFFF;
+      --charcoal: #1A1A1A;
+      --charcoal-light: #444444;
+      --gray: #777777;
+      --gray-light: #E8E4E0;
+      --amber: #D4760A;
+      --amber-dark: #B8650A;
+      --amber-light: #E8943A;
+      --amber-glow: rgba(212, 118, 10, 0.1);
+      --dark-section: #2B2B2B;
+      --dark-section-light: #3A3A3A;
+      --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+      --sans: 'Instrument Sans', -apple-system, system-ui, sans-serif;
+      --max-width: 1100px;
+      --transition: 0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--amber); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--amber-dark); }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-light);
+      padding: 0 24px;
+    }
+
+    nav .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-brand img { width: 32px; height: 32px; }
+
+    .nav-brand span {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--charcoal);
+    }
+
+    .nav-brand span em {
+      font-style: normal;
+      color: var(--amber);
+    }
+
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--charcoal-light);
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: all var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--charcoal); background: var(--amber-glow); }
+    .nav-links a.active { color: var(--charcoal); background: var(--amber-glow); font-weight: 600; }
+
+    .nav-cta {
+      background: var(--amber) !important;
+      color: var(--white) !important;
+      font-weight: 600 !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+    }
+
+    .nav-cta:hover { background: var(--amber-dark) !important; }
+
+    /* Mobile menu */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--charcoal); margin: 6px 0; transition: var(--transition); }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--gray-light);
+        gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 14px; }
+    }
+
+    /* ===== PAGE SECTIONS ===== */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    .btn-primary { background: var(--amber); color: var(--white); }
+    .btn-primary:hover { background: var(--amber-dark); color: var(--white); transform: translateY(-1px); }
+
+    .btn-outline { background: transparent; color: var(--amber); border: 2px solid var(--amber); }
+    .btn-outline:hover { background: var(--amber); color: var(--white); }
+
+    /* ===== SECTION STYLES ===== */
+    .section { padding: 80px 0; }
+    .section-sm { padding: 60px 0; }
+
+    .section-dark {
+      background: var(--dark-section);
+      color: var(--white);
+    }
+
+    .section-dark h2, .section-dark h3 { color: var(--white); }
+    .section-dark p { color: #CCCCCC; }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 54px);
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.3;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+
+    .text-center { text-align: center; }
+    .text-muted { color: var(--gray); }
+    .text-amber { color: var(--amber); }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--charcoal-light);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    .subtitle-centered {
+      font-size: 18px;
+      color: var(--charcoal-light);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 0 80px;
+      background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
+    }
+
+    .hero .btn-group { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+
+    /* ===== CARDS ===== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+      padding: 32px;
+      transition: all var(--transition);
+    }
+
+    .card:hover { border-color: var(--amber); box-shadow: 0 4px 20px rgba(212, 118, 10, 0.08); }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--amber-glow);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .card-icon svg { width: 24px; height: 24px; stroke: var(--amber); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ===== STEPS ===== */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 40px; }
+
+    .step { text-align: center; }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--amber);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    /* ===== PORTFOLIO ===== */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .portfolio-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .portfolio-card:hover { border-color: var(--amber); box-shadow: 0 8px 30px rgba(212, 118, 10, 0.1); transform: translateY(-2px); }
+
+    .portfolio-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      background: var(--gray-light);
+    }
+
+    .portfolio-info { padding: 24px; }
+    .portfolio-info h3 { margin-bottom: 8px; }
+    .portfolio-info p { color: var(--gray); font-size: 15px; margin-bottom: 16px; }
+
+    .portfolio-link {
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===== TEAM ===== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .team-card:hover { border-color: var(--amber); }
+
+    .team-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--amber-glow);
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .team-card h3 { font-size: 19px; margin-bottom: 4px; }
+    .team-location { font-size: 14px; color: var(--gray); margin-bottom: 8px; }
+    .team-role { font-size: 14px; font-weight: 600; color: var(--amber); margin-bottom: 12px; }
+    .team-tagline { font-size: 15px; color: var(--charcoal-light); font-style: italic; }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 40px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--charcoal);
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: var(--sans);
+      background: var(--white);
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--amber);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .contact-info-block { padding: 32px; background: var(--white); border: 1px solid var(--gray-light); border-radius: 12px; }
+    .contact-info-block h3 { margin-bottom: 16px; }
+    .contact-info-block p { margin-bottom: 12px; color: var(--charcoal-light); }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--amber);
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: var(--dark-section);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-banner h2 { color: var(--white); margin-bottom: 16px; }
+    .cta-banner p { color: #CCCCCC; max-width: 520px; margin: 0 auto 32px; font-size: 18px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--charcoal);
+      color: #999999;
+      padding: 48px 0 32px;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .footer-brand p { margin-top: 12px; max-width: 320px; line-height: 1.6; }
+
+    .footer-links h4 { color: var(--white); font-size: 14px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-links a { display: block; color: #999999; margin-bottom: 8px; font-size: 14px; }
+    .footer-links a:hover { color: var(--amber); }
+
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 32px auto 0;
+      padding: 24px 24px 0;
+      border-top: 1px solid #333333;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* ===== DARK SECTION STATS ===== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stat-number { font-family: var(--serif); font-size: 42px; color: var(--amber); margin-bottom: 8px; }
+    .stat-label { font-size: 15px; color: #CCCCCC; }
+
+    /* ===== ABOUT STORY ===== */
+    .story-content { max-width: 720px; margin: 0 auto; font-size: 17px; line-height: 1.8; }
+    .story-content p { margin-bottom: 20px; color: var(--charcoal-light); }
+
+    /* ===== MISSION/VALUES ===== */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .value-item { padding: 24px; }
+    .value-item h3 { color: var(--amber); font-size: 18px; margin-bottom: 8px; }
+
+    /* Animations */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .fade-in.visible { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" onclick="navigate('home')">
+        <img src="logo.svg" alt="VividLaunchForge">
+        <span>Vivid<em>Launch</em>Forge</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a data-page="home" onclick="navigate('home')" class="active">Home</a>
+        <a data-page="services" onclick="navigate('services')">Services</a>
+        <a data-page="portfolio" onclick="navigate('portfolio')">Portfolio</a>
+        <a data-page="about" onclick="navigate('about')">About Us</a>
+        <a data-page="contact" onclick="navigate('contact')" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- HOME PAGE -->
+  <!-- ============================================================ -->
+  <div class="page active" id="page-home">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <p class="section-label">Built by a global team. Powered by modern tools.</p>
+        <h1>Your idea deserves<br>a home <em class="text-amber">online.</em></h1>
+        <p class="subtitle">We design and build websites that bring your vision to life — fast, affordable, and stress-free.</p>
+        <div class="btn-group">
+          <a class="btn btn-primary" onclick="navigate('contact')">Start Your Website &rarr;</a>
+          <a class="btn btn-outline" onclick="navigate('portfolio')">See Our Work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section">
+      <div class="container text-center">
+        <p class="section-label">The challenge</p>
+        <h2>You have a great idea.<br>But no website to show for it.</h2>
+        <p class="subtitle-centered">Without a professional online presence, you're invisible to customers, clients, and opportunities. Building a website feels overwhelming, expensive, and technical. It shouldn't be.</p>
+      </div>
+    </section>
+
+    <!-- Solution Section (Dark) -->
+    <section class="section section-dark">
+      <div class="container text-center">
+        <p class="section-label">Our approach</p>
+        <h2>We handle everything.<br>You go live with confidence.</h2>
+        <p class="subtitle-centered" style="color:#CCCCCC;">From first conversation to a live, professional website — we take care of the design, the build, and the launch so you can focus on what you do best.</p>
+        <div class="stats-row" style="margin-top:48px;">
+          <div>
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Websites launched</div>
+          </div>
+          <div>
+            <div class="stat-number">4</div>
+            <div class="stat-label">Countries represented</div>
+          </div>
+          <div>
+            <div class="stat-number">7</div>
+            <div class="stat-label">Team members</div>
+          </div>
+          <div>
+            <div class="stat-number">Days</div>
+            <div class="stat-label">Not weeks to launch</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+      <div class="container text-center">
+        <p class="section-label">How it works</p>
+        <h2>Four simple steps to your website</h2>
+        <div class="steps">
+          <div class="step fade-in">
+            <div class="step-number">1</div>
+            <h3>Tell us about your idea</h3>
+            <p class="text-muted">Share your vision, your audience, and what you want your website to accomplish.</p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">2</div>
+            <h3>We ask a few questions</h3>
+            <p class="text-muted">A short conversation to make sure we understand exactly what you need.</p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">3</div>
+            <h3>We build your site</h3>
+            <p class="text-muted">Our team designs and develops your website using modern tools for speed and quality.</p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">4</div>
+            <h3>You go live</h3>
+            <p class="text-muted">Your website launches and you're open for business — online and professional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Ready to bring your idea to life?</h2>
+        <p>Let's build something you're proud of. No technical stress. No jargon. Just results.</p>
+        <a class="btn btn-primary" onclick="navigate('contact')">Start Your Website &rarr;</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SERVICES PAGE -->
+  <!-- ============================================================ -->
+  <div class="page" id="page-services">
+
+    <section class="hero" style="padding:80px 0 60px;">
+      <div class="container">
+        <p class="section-label">What we do</p>
+        <h1>Website creation,<br><em class="text-amber">simplified.</em></h1>
+        <p class="subtitle">We build professional, modern websites for businesses and individuals who want to establish a strong online presence — without the headache.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Our services</p>
+        <h2>Everything you need to get online</h2>
+        <div class="card-grid">
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Custom Website Design</h3>
+            <p class="text-muted">A website designed around your brand, your audience, and your goals — not a cookie-cutter template.</p>
+          </div>
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>Responsive Development</h3>
+            <p class="text-muted">Your site will look great on every device — phones, tablets, and desktops — right from day one.</p>
+          </div>
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3>Domain &amp; Launch Support</h3>
+            <p class="text-muted">We help you get your domain set up and your site live so you're not stuck figuring out the technical details.</p>
+          </div>
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Content &amp; Messaging</h3>
+            <p class="text-muted">We help craft clear, compelling content that speaks to your audience and communicates your value.</p>
+          </div>
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3>Fast Turnaround</h3>
+            <p class="text-muted">We launch in days, not weeks. Our modern workflow means your website is ready faster than you'd expect.</p>
+          </div>
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Ongoing Support</h3>
+            <p class="text-muted">Need changes after launch? We're here to help you keep your site fresh and up to date.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Help -->
+    <section class="section section-dark">
+      <div class="container text-center">
+        <p class="section-label">Who we help</p>
+        <h2>Websites for businesses and individuals</h2>
+        <div class="card-grid" style="max-width:700px; margin:40px auto 0;">
+          <div class="card" style="background:var(--dark-section-light); border-color:#555;">
+            <h3 style="color:var(--amber);">Businesses</h3>
+            <p style="color:#CCC;">Small businesses, service providers, shops, and startups who need a professional online presence to attract customers and grow.</p>
+          </div>
+          <div class="card" style="background:var(--dark-section-light); border-color:#555;">
+            <h3 style="color:var(--amber);">Individuals</h3>
+            <p style="color:#CCC;">Freelancers, students, job seekers, and creatives who want a personal website or portfolio to showcase their work and attract opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Let's build your website</h2>
+        <p>Tell us about your idea and we'll take it from there.</p>
+        <a class="btn btn-primary" onclick="navigate('contact')">Get in Touch &rarr;</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PORTFOLIO PAGE -->
+  <!-- ============================================================ -->
+  <div class="page" id="page-portfolio">
+
+    <section class="hero" style="padding:80px 0 60px;">
+      <div class="container">
+        <p class="section-label">Our work</p>
+        <h1>Websites we've <em class="text-amber">built.</em></h1>
+        <p class="subtitle">Real websites, built for real people and businesses. Every project starts as an idea and ends as a live, working website.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="portfolio-grid">
+
+          <div class="portfolio-card fade-in">
+            <div class="portfolio-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2C6E5A,#3A8B6E);color:#FFF;font-family:var(--serif);font-size:22px;">infointerview.org</div>
+            <div class="portfolio-info">
+              <h3>InfoInterview.org</h3>
+              <p>A platform helping students and job seekers prepare for informational interviews and build professional networks.</p>
+              <a class="portfolio-link" href="https://infointerview.org" target="_blank" rel="noopener">Visit site <span>&rarr;</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-card fade-in">
+            <div class="portfolio-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#B8650A,#D4760A);color:#FFF;font-family:var(--serif);font-size:22px;">UV Small Engine Repair</div>
+            <div class="portfolio-info">
+              <h3>UV Small Engine Repair</h3>
+              <p>A local service business website designed to attract customers and make it easy to request repairs.</p>
+              <a class="portfolio-link" href="https://uvsmallenginerepairt.com" target="_blank" rel="noopener">Visit site <span>&rarr;</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-card fade-in">
+            <div class="portfolio-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#8B3A6E,#B04E8A);color:#FFF;font-family:var(--serif);font-size:22px;">PrincessHeaven.com</div>
+            <div class="portfolio-info">
+              <h3>PrincessHeaven.com</h3>
+              <p>A beauty and wellness brand website built to showcase products and connect with customers.</p>
+              <a class="portfolio-link" href="https://princessheaven.com" target="_blank" rel="noopener">Visit site <span>&rarr;</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-card fade-in">
+            <div class="portfolio-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2B2B2B,#444);color:#FFF;font-family:var(--serif);font-size:22px;">AllowGeneration.com</div>
+            <div class="portfolio-info">
+              <h3>AllowGeneration.com</h3>
+              <p>A clothing brand website built on identity, creativity, and confidence — from concept to live site.</p>
+              <a class="portfolio-link" href="https://allowgeneration.com" target="_blank" rel="noopener">Visit site <span>&rarr;</span></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Your website could be next</h2>
+        <p>Every project in our portfolio started with a simple conversation. Let's start yours.</p>
+        <a class="btn btn-primary" onclick="navigate('contact')">Start Your Website &rarr;</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ABOUT PAGE -->
+  <!-- ============================================================ -->
+  <div class="page" id="page-about">
+
+    <section class="hero" style="padding:80px 0 60px;">
+      <div class="container">
+        <p class="section-label">About us</p>
+        <h1>A global team building<br><em class="text-amber">real websites.</em></h1>
+        <p class="subtitle">VividLaunchForge is a collaborative team of BYU-Pathway students from across Africa, gaining real-world skills while helping others bring their ideas to life.</p>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section">
+      <div class="container">
+        <div class="story-content">
+          <p class="section-label">Our story</p>
+          <p>VividLaunchForge began as a simple mentoring session — just a few young people looking for guidance. With the leadership of our Pathway career coach, that small gathering grew into a powerful international program where students learn AI skills, build real websites, strengthen communication, and develop career confidence.</p>
+          <p>Every Tuesday evening, our team meets for a focused online session — teaching, guiding, and empowering each other to build the future. We work across four countries, managing time zones, internet challenges, and shared responsibilities to deliver professional results.</p>
+          <p>We believe that skills open doors, small daily efforts create big long-term results, and self-reliance empowers you to lift others. These principles guide every session and every project.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section section-dark">
+      <div class="container text-center">
+        <p class="section-label">What drives us</p>
+        <h2>Built on purpose, not just pixels</h2>
+        <div class="values-grid">
+          <div class="value-item">
+            <h3>Self-Reliance</h3>
+            <p style="color:#CCC;">We're building skills that open doors — for ourselves and for the people we serve.</p>
+          </div>
+          <div class="value-item">
+            <h3>Learning by Doing</h3>
+            <p style="color:#CCC;">Every website we build is a real project with real outcomes. We learn by shipping, not just studying.</p>
+          </div>
+          <div class="value-item">
+            <h3>Global Collaboration</h3>
+            <p style="color:#CCC;">Our team spans South Africa, Zimbabwe, Nigeria, and Ghana — working together across borders and time zones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section">
+      <div class="container text-center">
+        <p class="section-label">The team</p>
+        <h2>Meet the people behind the work</h2>
+        <div class="team-grid">
+
+          <div class="team-card fade-in">
+            <div class="team-avatar">E</div>
+            <h3>Elijah</h3>
+            <p class="team-location">Ghana</p>
+            <p class="team-role">Data &amp; Automation</p>
+            <p class="team-tagline">"He doesn't just complete tasks — he improves the system behind them."</p>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar">C</div>
+            <h3>Collins</h3>
+            <p class="team-location">Nigeria</p>
+            <p class="team-role">Customer Support &amp; Project Management</p>
+            <p class="team-tagline">"He combines strong customer skills with project management to deliver results."</p>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar">N</div>
+            <h3>Nyasha</h3>
+            <p class="team-location">Zimbabwe</p>
+            <p class="team-role">Web Development &amp; Product Building</p>
+            <p class="team-tagline">"He doesn't wait to be taught — he builds, experiments, and learns in real time."</p>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar">T</div>
+            <h3>Thato</h3>
+            <p class="team-location">Southern Africa</p>
+            <p class="team-role">Communication &amp; Media</p>
+            <p class="team-tagline">"She combines creativity and communication with real-world experience across industries."</p>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar">T</div>
+            <h3>Thandanani</h3>
+            <p class="team-location">South Africa</p>
+            <p class="team-role">IT Support &amp; AI QA</p>
+            <p class="team-tagline">"He bridges emerging AI technologies, technical support, and entrepreneurship."</p>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar">K</div>
+            <h3>Khanya</h3>
+            <p class="team-location">South Africa</p>
+            <p class="team-role">Social Media Strategy</p>
+            <p class="team-tagline">"She builds, measures, and refines her work in real time."</p>
+          </div>
+
+          <div class="team-card fade-in">
+            <div class="team-avatar">G</div>
+            <h3>Graham</h3>
+            <p class="team-location">South Africa</p>
+            <p class="team-role">Communications &amp; Documentation</p>
+            <p class="team-tagline">"He combines precision and consistency with growing communication skills."</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Want to work with us?</h2>
+        <p>We'd love to hear about your project and help bring it to life.</p>
+        <a class="btn btn-primary" onclick="navigate('contact')">Get in Touch &rarr;</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CONTACT PAGE -->
+  <!-- ============================================================ -->
+  <div class="page" id="page-contact">
+
+    <section class="hero" style="padding:80px 0 60px;">
+      <div class="container">
+        <p class="section-label">Contact us</p>
+        <h1>Let's talk about<br><em class="text-amber">your project.</em></h1>
+        <p class="subtitle">Have an idea for a website? Send us a message and we'll get back to you to start the conversation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+              <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" required placeholder="What should we call you?">
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label for="subject">What do you need?</label>
+                <select id="subject" name="subject">
+                  <option value="new-website">A new website</option>
+                  <option value="update-website">Updates to an existing website</option>
+                  <option value="portfolio">A personal portfolio site</option>
+                  <option value="other">Something else</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Tell us about your idea</label>
+                <textarea id="message" name="message" required placeholder="Describe your project, your audience, and what you'd like to achieve..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;">Send Message &rarr;</button>
+            </form>
+            <p id="formSuccess" style="display:none; margin-top:16px; padding:16px; background:var(--amber-glow); border-radius:8px; color:var(--amber-dark); font-weight:600; text-align:center;">Thanks! We'll be in touch soon.</p>
+          </div>
+          <div>
+            <div class="contact-info-block">
+              <h3>Prefer email?</h3>
+              <p>You can reach us directly at:</p>
+              <a class="contact-email" href="mailto:info@vividlaunchforge.com">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                info@vividlaunchforge.com
+              </a>
+            </div>
+            <div class="contact-info-block" style="margin-top:24px;">
+              <h3>What happens next?</h3>
+              <p>After you reach out, here's what to expect:</p>
+              <p><strong>1.</strong> We'll respond within 1–2 business days.</p>
+              <p><strong>2.</strong> We'll schedule a short conversation to understand your needs.</p>
+              <p><strong>3.</strong> We'll share a plan and timeline for your website.</p>
+              <p><strong>4.</strong> You'll have a live website in days — not weeks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" onclick="navigate('home')" style="cursor:pointer;">
+          <img src="logo.svg" alt="VividLaunchForge" style="width:28px;height:28px;">
+          <span style="color:#FFF;font-weight:700;font-size:16px;">Vivid<em style="font-style:normal;color:var(--amber);">Launch</em>Forge</span>
+        </a>
+        <p>Building professional websites for businesses and individuals — fast, affordable, and stress-free.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a onclick="navigate('home')" style="cursor:pointer;">Home</a>
+        <a onclick="navigate('services')" style="cursor:pointer;">Services</a>
+        <a onclick="navigate('portfolio')" style="cursor:pointer;">Portfolio</a>
+        <a onclick="navigate('about')" style="cursor:pointer;">About Us</a>
+        <a onclick="navigate('contact')" style="cursor:pointer;">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:info@vividlaunchforge.com">info@vividlaunchforge.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 VividLaunchForge. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Navigation
+    function navigate(page) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Show target page
+      const target = document.getElementById('page-' + page);
+      if (target) target.classList.add('active');
+      // Update nav active state
+      document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === page);
+      });
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Close mobile menu
+      document.getElementById('navLinks').classList.remove('open');
+      // Trigger fade-in animations
+      setTimeout(triggerFadeIns, 100);
+    }
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // Form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const subject = form.subject.value;
+      const message = form.message.value;
+
+      // Create mailto link as fallback
+      const mailtoBody = encodeURIComponent(
+        'Name: ' + name + '\nEmail: ' + email + '\nSubject: ' + subject + '\n\nMessage:\n' + message
+      );
+      window.location.href = 'mailto:info@vividlaunchforge.com?subject=Website Inquiry from ' + encodeURIComponent(name) + '&body=' + mailtoBody;
+
+      // Show success message
+      document.getElementById('formSuccess').style.display = 'block';
+      form.reset();
+    }
+
+    // Fade-in animation on scroll
+    function triggerFadeIns() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in:not(.visible)').forEach(el => observer.observe(el));
+    }
+
+    // Initialize
+    triggerFadeIns();
+  </script>
+
+</body>
+</html>
